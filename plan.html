@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>תוכנית אימונים · המחברת</title>
+<meta property="og:title" content="תוכנית אימונים במחברת">
+<meta property="og:description" content="פותחים את הקישור באייפון כדי לייבא את התוכנית לאפליקציה.">
+<style>
+  :root { --bg: #f6f4ef; --text: #1c1b19; --muted: #6b6760; --accent: #e8572a; --card: #ffffff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #121110; --text: #f2efe9; --muted: #a09b92; --card: #1e1c1a; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+         background: var(--bg); color: var(--text); padding: 24px 16px;
+         font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+  main { width: 100%; max-width: 420px; background: var(--card); border-radius: 20px; padding: 28px 24px; text-align: center; }
+  h1 { font-size: 24px; margin: 0 0 8px; }
+  p { margin: 0 0 16px; color: var(--muted); }
+  a.button { display: block; padding: 14px; border-radius: 14px; font-weight: 600; text-decoration: none; margin-top: 12px; }
+  a.primary { background: var(--accent); color: #fff; }
+  a.secondary { border: 1.5px solid var(--accent); color: var(--accent); }
+  .small { font-size: 14px; margin-top: 16px; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <div id="ok">
+    <h1 data-he="שיתפו איתך תוכנית אימונים" data-en="Someone shared a training plan with you"></h1>
+    <p data-he="פותחים אותה במחברת, בודקים, ושומרים כתוכנית שלך." data-en="Open it in The Notebook, check it, and save it as your plan."></p>
+    <a id="open" class="button primary" href="#" data-he="פתיחה באפליקציה" data-en="Open in the App"></a>
+    <p class="small" data-he="עוד אין לך את המחברת? מתקינים מ-TestFlight, ואז חוזרים לכאן ולוחצים שוב על הקישור." data-en="Don't have The Notebook yet? Install it from TestFlight, then come back here and tap the link again."></p>
+    <a class="button secondary" href="https://testflight.apple.com/join/QfET88Zu" data-he="התקנה מ-TestFlight" data-en="Install from TestFlight"></a>
+  </div>
+  <div id="bad" class="hidden">
+    <h1 data-he="הקישור לא תקין" data-en="This link isn't right"></h1>
+    <p data-he="אפשר לבקש ממי ששלח קישור חדש." data-en="Ask the person who sent it for a new link."></p>
+  </div>
+</main>
+<script>
+  var en = !/^he\b/i.test(navigator.language || "");
+  if (en) { document.documentElement.lang = "en"; document.documentElement.dir = "ltr"; document.title = "Training plan · The Notebook"; }
+  document.querySelectorAll("[data-he]").forEach(function (el) { el.textContent = el.getAttribute(en ? "data-en" : "data-he"); });
+  var id = new URLSearchParams(location.search).get("id") || "";
+  if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    var app = "thenotebook://plan/" + id.toLowerCase();
+    document.getElementById("open").href = app;
+    // Opens the app right away when it's installed; otherwise this page stays.
+    location.href = app;
+  } else {
+    document.getElementById("ok").classList.add("hidden");
+    document.getElementById("bad").classList.remove("hidden");
+  }
+</script>
+</body>
+</html>
