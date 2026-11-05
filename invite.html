@@ -8,49 +8,115 @@
 <meta property="og:title" content="הזמנה להתאמן ביחד במחברת">
 <meta property="og:description" content="אפליקציה לרישום אימוני כוח. נרשמים דרך ההזמנה, ואתם חברים מיד.">
 <style>
-  :root { --bg: #16171A; --surface: #1F2024; --line: #2C2D33; --text: #F4F2EE; --muted: #A3A1A8; --accent: #F0A882; --on-accent: #16171A; }
+  /* The app's dark palette (Theme): ground #16171A, surface #1F2024, accent #F0A882. System font, like the app. */
+  :root {
+    --bg: #16171A; --surface: #1F2024; --raised: #292A2F; --line: #2E2F35;
+    --text: #F4F2EE; --muted: #A6A4AB; --accent: #F0A882; --on-accent: #16171A;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; min-height: 100vh; min-height: 100svh; background: var(--bg); color: var(--text);
-         font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Arial, sans-serif;
-         display: flex; flex-direction: column;
-         padding: max(24px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom)); }
-  main { flex: 1; width: 100%; max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; }
-  .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px 0; }
-  .avatar { width: 128px; height: 128px; border-radius: 50%; background: var(--surface); color: var(--accent);
-            box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
-            display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 700; overflow: hidden; margin-bottom: 28px; }
+  body {
+    margin: 0; min-height: 100vh; min-height: 100svh; background: var(--bg); color: var(--text);
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Arial, sans-serif;
+    padding: max(20px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom));
+  }
+  main { max-width: 400px; margin: 0 auto; }
+
+  .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px 0 32px; }
+  .avatar {
+    width: 132px; height: 132px; border-radius: 50%; background: var(--surface); color: var(--accent);
+    box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 54px; font-weight: 700; overflow: hidden;
+    margin-bottom: 28px;
+  }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
-  h1 { font-size: 30px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; margin: 0 0 12px; text-wrap: balance; }
+  h1 { font-size: 30px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; margin: 0 0 10px; text-wrap: balance; }
   .lead { margin: 0; color: var(--muted); max-width: 30ch; text-wrap: balance; }
-  .actions { display: flex; flex-direction: column; gap: 4px; }
-  .primary { display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 28px; border-radius: 16px;
-             background: var(--accent); color: var(--on-accent); font-size: 18px; font-weight: 700; text-decoration: none;
-             transition: transform 120ms ease-out, filter 120ms ease-out; -webkit-tap-highlight-color: transparent; }
-  .primary:active { transform: scale(0.98); filter: brightness(0.92); }
-  .primary:focus-visible, .secondary:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
-  .secondary { display: flex; align-items: center; justify-content: center; min-height: 48px; color: var(--accent);
-               font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 12px; }
-  .help { margin: 20px 0 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); text-align: center; }
-  .code { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 8px; background: var(--surface); color: var(--text);
-          font: 600 15px/1.6 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: 0.12em; direction: ltr; user-select: all; }
-  .help strong { color: var(--text); font-weight: 600; }
+
+  .primary {
+    display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; padding: 0 28px; border-radius: 18px;
+    background: var(--accent); color: var(--on-accent); font-size: 19px; font-weight: 700; text-decoration: none;
+    transition: transform 160ms var(--ease-out), filter 160ms var(--ease-out); -webkit-tap-highlight-color: transparent;
+  }
+  .primary svg { width: 22px; height: 22px; }
+  .primary:active { transform: scale(0.97); filter: brightness(0.92); }
+  .secondary {
+    display: flex; align-items: center; justify-content: center; min-height: 48px; margin-top: 4px; border-radius: 12px;
+    color: var(--accent); font-size: 16px; font-weight: 600; text-decoration: none; -webkit-tap-highlight-color: transparent;
+  }
+  a:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+
+  .steps { margin: 28px 0 0; padding: 20px; background: var(--surface); border-radius: 22px; }
+  .steps h2 { font-size: 15px; font-weight: 700; margin: 0 0 16px; color: var(--text); }
+  .steps ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .steps li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: center; }
+  .icon {
+    width: 40px; height: 40px; border-radius: 12px; background: var(--raised); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icon svg { width: 20px; height: 20px; }
+  .step-text { font-size: 15px; line-height: 1.4; color: var(--muted); }
+  .step-text strong { display: block; color: var(--text); font-weight: 600; font-size: 16px; }
+  .step-text a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .en { direction: ltr; unicode-bidi: isolate; font-weight: 600; color: var(--text); }
+
+  .help { margin: 24px 0 0; font-size: 14px; color: var(--muted); text-align: center; text-wrap: balance; }
+  .help strong { color: var(--text); font-weight: 600; white-space: nowrap; }
+  .code {
+    display: inline-block; margin-top: 10px; padding: 6px 14px; border-radius: 10px; background: var(--surface); color: var(--text);
+    font: 600 16px/1.5 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: 0.14em; direction: ltr; user-select: all;
+  }
   .hidden { display: none !important; }
-  @media (prefers-reduced-motion: reduce) { .primary { transition: none; } }
+
+  /* Arrive once, quickly: the photo settles, then the rest follows (30-80ms apart). */
+  .in { animation: rise 420ms var(--ease-out) both; }
+  .avatar.in { animation-name: settle; }
+  .d1 { animation-delay: 60ms; } .d2 { animation-delay: 120ms; } .d3 { animation-delay: 180ms; } .d4 { animation-delay: 240ms; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes settle { from { opacity: 0; transform: scale(0.94); } }
+  @media (prefers-reduced-motion: reduce) {
+    .in { animation: fade 200ms linear both; } .avatar.in { animation-name: fade; }
+    .primary { transition: none; }
+    @keyframes fade { from { opacity: 0; } }
+  }
 </style>
 </head>
 <body>
 <main>
   <section class="hero">
-    <div class="avatar" id="avatar" aria-hidden="true"></div>
-    <h1 id="title">הוזמנת להתאמן ביחד במחברת</h1>
-    <p class="lead" id="lead">המחברת היא אפליקציה לרישום אימוני כוח. נרשמים דרך ההזמנה, ואתם חברים מיד.</p>
+    <div class="avatar in" id="avatar" aria-hidden="true">מ</div>
+    <h1 class="in d1" id="title">הוזמנת להתאמן ביחד במחברת</h1>
+    <p class="lead in d2" id="lead">המחברת היא אפליקציה לרישום אימוני כוח. נרשמים דרך ההזמנה, ואתם חברים מיד.</p>
   </section>
-  <div class="actions" id="actions">
-    <a id="install" class="primary" href="https://testflight.apple.com/join/QfET88Zu">להתקנה</a>
+
+  <div class="in d3" id="actions">
+    <a id="install" class="primary" href="https://testflight.apple.com/join/QfET88Zu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+      להתקנה
+    </a>
     <a id="open" class="secondary" href="#">כבר מותקן? פתיחה</a>
-    <p class="help">לא רואים את ההזמנה באפליקציה? במסך הפתיחה לוחצים על <strong>יש&nbsp;לך&nbsp;הזמנה&nbsp;מחברים?</strong> ומקלידים את הקוד:<br><span class="code" id="code"></span></p>
   </div>
+
+  <section class="steps in d4" id="steps" aria-labelledby="steps-title">
+    <h2 id="steps-title">ככה מתקינים, בשלושה צעדים</h2>
+    <ol>
+      <li>
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4.5"/><path d="M12 8v6"/><path d="m9 11.5 3 3 3-3"/></svg></span>
+        <span class="step-text"><strong>מורידים את <span class="en">TestFlight</span></strong><a href="https://apps.apple.com/app/testflight/id899247664">מהאפסטור</a>, בחינם</span>
+      </li>
+      <li>
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="m8.5 12.2 2.4 2.3 4.6-4.8"/></svg></span>
+        <span class="step-text"><strong>חוזרים לכאן ולוחצים "להתקנה"</strong>ואז <span class="en">Accept</span></span>
+      </li>
+      <li>
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18.5V6a2 2 0 0 1 2-2h12v13H7a2 2 0 0 0-2 2Z"/><path d="M5 18.5A2 2 0 0 0 7 20.5h12"/><path d="M9 8.5h6"/></svg></span>
+        <span class="step-text"><strong>לוחצים <span class="en">Install</span></strong>ופותחים את המחברת</span>
+      </li>
+    </ol>
+  </section>
+
+  <p class="help in d4" id="help">לא רואים את ההזמנה באפליקציה? במסך הפתיחה לוחצים על <strong>יש לך הזמנה מחברים?</strong> ומקלידים את הקוד:<br><span class="code" id="code"></span></p>
 </main>
 <script>
   // While in beta: TestFlight. At launch: the App Store (https://apps.apple.com/app/id6830705009).
@@ -61,13 +127,11 @@
   var g = params.get("g") || "";
   var title = document.getElementById("title");
   var avatar = document.getElementById("avatar");
-  avatar.textContent = "מ";
 
   if (!/^[A-Z0-9]{8}$/.test(code)) {
     title.textContent = "הקישור לא תקין";
     document.getElementById("lead").textContent = "אפשר לבקש ממי ששלח קישור חדש.";
-    document.getElementById("open").classList.add("hidden");
-    document.querySelector(".help").classList.add("hidden");
+    ["actions", "steps", "help"].forEach(function (id) { document.getElementById(id).classList.add("hidden"); });
   } else {
     document.getElementById("code").textContent = code;
     document.getElementById("open").href = "thenotebook://invite/" + code + (g ? "?g=" + g : "");
