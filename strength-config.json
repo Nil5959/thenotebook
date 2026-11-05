@@ -1,0 +1,733 @@
+{
+  "accessoryCap" : 70,
+  "bestSessions" : 3,
+  "bodyweightLifts" : [
+    "Chest Dip",
+    "Chin Up",
+    "Neutral Grip Pull Up",
+    "Pull Up",
+    "Ring Dip",
+    "Straight Bar Dip",
+    "Triceps Dip",
+    "Weighted Pull Up",
+    "Wide Grip Pull Up"
+  ],
+  "bodyweightRange" : [
+    35,
+    250
+  ],
+  "configVersion" : 1,
+  "curveWidth" : 0.25,
+  "estimateDiscount" : 0.5,
+  "fallbackSessions" : 4,
+  "groups" : {
+    "back" : {
+      "exercises" : {
+        "Bent Over Row (Barbell)" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Chest Supported Row" : {
+          "factor" : 2,
+          "kind" : "free"
+        },
+        "Chin Up" : {
+          "factor" : 0.75,
+          "kind" : "free"
+        },
+        "Close Grip Lat Pulldown" : {
+          "factor" : 0.9,
+          "kind" : "machine"
+        },
+        "Dumbbell Row" : {
+          "factor" : 1.9,
+          "kind" : "free"
+        },
+        "Hammer Strength Pulldown" : {
+          "factor" : 0.85,
+          "kind" : "machine"
+        },
+        "Hammer Strength Row" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "High Row (Machine)" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Kroc Row" : {
+          "factor" : 1.8,
+          "kind" : "free"
+        },
+        "Lat Pulldown (Cable)" : {
+          "factor" : 0.9,
+          "kind" : "machine"
+        },
+        "Lat Pulldown (Machine)" : {
+          "factor" : 0.85,
+          "kind" : "machine"
+        },
+        "Low Row (Machine)" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Neutral Grip Pull Up" : {
+          "factor" : 0.8,
+          "kind" : "free"
+        },
+        "Pendlay Row" : {
+          "factor" : 1.05,
+          "kind" : "free"
+        },
+        "Pull Up" : {
+          "factor" : 0.8,
+          "kind" : "free"
+        },
+        "Reverse Grip Lat Pulldown" : {
+          "factor" : 0.9,
+          "kind" : "machine"
+        },
+        "Seal Row" : {
+          "factor" : 1.1,
+          "kind" : "free"
+        },
+        "Seated Cable Row" : {
+          "factor" : 0.85,
+          "kind" : "machine"
+        },
+        "Seated Row (Machine)" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Single Arm Cable Row" : {
+          "factor" : 1.7,
+          "kind" : "machine"
+        },
+        "Single Arm Lat Pulldown" : {
+          "factor" : 1.6,
+          "kind" : "machine"
+        },
+        "T-Bar Row" : {
+          "factor" : 0.9,
+          "kind" : "machine"
+        },
+        "Weighted Pull Up" : {
+          "factor" : 0.8,
+          "kind" : "free"
+        },
+        "Wide Grip Cable Row" : {
+          "factor" : 0.85,
+          "kind" : "machine"
+        },
+        "Wide Grip Pull Up" : {
+          "factor" : 0.8,
+          "kind" : "free"
+        },
+        "Yates Row" : {
+          "factor" : 0.95,
+          "kind" : "free"
+        }
+      },
+      "femaleFactors" : [
+        0.49,
+        0.56,
+        0.62,
+        0.67,
+        0.7
+      ],
+      "standards" : [
+        0.6,
+        0.8,
+        1.1,
+        1.4,
+        1.75
+      ],
+      "weight" : {
+        "men" : 0.2,
+        "women" : 0.2
+      }
+    },
+    "biceps" : {
+      "estimates" : {
+        "extra" : {
+          "Chin Up" : 0.45
+        },
+        "from" : [
+          {
+            "group" : "back",
+            "ratio" : 0.52
+          }
+        ]
+      },
+      "exercises" : {
+        "Bayesian Curl" : {
+          "factor" : 1.6,
+          "kind" : "machine"
+        },
+        "Bicep Curl (Barbell)" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Bicep Curl (Dumbbell)" : {
+          "factor" : 2,
+          "kind" : "free"
+        },
+        "Cable Curl" : {
+          "factor" : 0.75,
+          "kind" : "machine"
+        },
+        "Cable Preacher Curl" : {
+          "factor" : 0.75,
+          "kind" : "machine"
+        },
+        "Concentration Curl" : {
+          "factor" : 2.2,
+          "kind" : "free"
+        },
+        "Drag Curl" : {
+          "factor" : 1.1,
+          "kind" : "free"
+        },
+        "EZ-Bar Curl" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Hammer Curl" : {
+          "factor" : 1.9,
+          "kind" : "free"
+        },
+        "Incline Curl (Dumbbell)" : {
+          "factor" : 2.3,
+          "kind" : "free"
+        },
+        "Machine Curl" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Preacher Curl" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Preacher Curl (Dumbbell)" : {
+          "factor" : 2.1,
+          "kind" : "free"
+        },
+        "Preacher Curl (EZ Bar)" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Spider Curl" : {
+          "factor" : 2.2,
+          "kind" : "free"
+        }
+      },
+      "femaleFactors" : [
+        0.45,
+        0.56,
+        0.64,
+        0.7,
+        0.75
+      ],
+      "standards" : [
+        0.27,
+        0.4,
+        0.57,
+        0.78,
+        1
+      ],
+      "weight" : {
+        "men" : 0.11,
+        "women" : 0.1
+      }
+    },
+    "chest" : {
+      "exercises" : {
+        "Bench Press (Barbell)" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Bench Press (Dumbbell)" : {
+          "factor" : 2.3,
+          "kind" : "free"
+        },
+        "Chest Dip" : {
+          "factor" : 0.75,
+          "kind" : "free"
+        },
+        "Chest Press (Machine)" : {
+          "factor" : 0.75,
+          "kind" : "machine"
+        },
+        "Close Grip Bench Press" : {
+          "factor" : 1.05,
+          "kind" : "free"
+        },
+        "Decline Bench Press (Barbell)" : {
+          "factor" : 0.95,
+          "kind" : "free"
+        },
+        "Decline Bench Press (Dumbbell)" : {
+          "factor" : 2.2,
+          "kind" : "free"
+        },
+        "Decline Chest Press (Machine)" : {
+          "factor" : 0.7,
+          "kind" : "machine"
+        },
+        "Floor Press (Barbell)" : {
+          "factor" : 1.05,
+          "kind" : "free"
+        },
+        "Floor Press (Dumbbell)" : {
+          "factor" : 2.4,
+          "kind" : "free"
+        },
+        "Hammer Strength Chest Press" : {
+          "factor" : 0.75,
+          "kind" : "machine"
+        },
+        "Hammer Strength Incline Press" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Incline Bench Press (Barbell)" : {
+          "factor" : 1.12,
+          "kind" : "free"
+        },
+        "Incline Bench Press (Dumbbell)" : {
+          "factor" : 2.35,
+          "kind" : "free"
+        },
+        "Incline Chest Press (Machine)" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Larsen Press" : {
+          "factor" : 1.05,
+          "kind" : "free"
+        },
+        "Pause Bench Press" : {
+          "factor" : 1.05,
+          "kind" : "free"
+        },
+        "Ring Dip" : {
+          "factor" : 0.8,
+          "kind" : "free"
+        },
+        "Smith Machine Bench Press" : {
+          "factor" : 0.9,
+          "kind" : "machine"
+        },
+        "Smith Machine Incline Press" : {
+          "factor" : 1,
+          "kind" : "machine"
+        },
+        "Spoto Press" : {
+          "factor" : 1.05,
+          "kind" : "free"
+        },
+        "Straight Bar Dip" : {
+          "factor" : 0.75,
+          "kind" : "free"
+        },
+        "Triceps Dip" : {
+          "factor" : 0.7,
+          "kind" : "free"
+        }
+      },
+      "femaleFactors" : [
+        0.46,
+        0.54,
+        0.63,
+        0.69,
+        0.75
+      ],
+      "standards" : [
+        0.7,
+        0.95,
+        1.25,
+        1.55,
+        2
+      ],
+      "weight" : {
+        "men" : 0.2,
+        "women" : 0.14
+      }
+    },
+    "legs" : {
+      "exercises" : {
+        "Barbell Lunge" : {
+          "factor" : 1.4,
+          "kind" : "free"
+        },
+        "Belt Squat" : {
+          "factor" : 0.85,
+          "kind" : "machine"
+        },
+        "Box Squat" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Bulgarian Split Squat" : {
+          "factor" : 3.5,
+          "kind" : "free"
+        },
+        "Deadlift (Barbell)" : {
+          "factor" : 0.8,
+          "kind" : "free"
+        },
+        "Dumbbell Romanian Deadlift" : {
+          "factor" : 2,
+          "kind" : "free"
+        },
+        "Front Squat" : {
+          "factor" : 1.2,
+          "kind" : "free"
+        },
+        "Hack Squat (Machine)" : {
+          "factor" : 0.7,
+          "kind" : "machine"
+        },
+        "Hip Thrust (Barbell)" : {
+          "factor" : 0.5,
+          "kind" : "accessory"
+        },
+        "Hip Thrust (Dumbbell)" : {
+          "factor" : 0.5,
+          "kind" : "accessory"
+        },
+        "Hip Thrust (Machine)" : {
+          "factor" : 0.45,
+          "kind" : "accessory"
+        },
+        "Leg Curl (Machine)" : {
+          "factor" : 0.8,
+          "kind" : "accessory"
+        },
+        "Leg Extension" : {
+          "factor" : 0.75,
+          "kind" : "accessory"
+        },
+        "Leg Press" : {
+          "factor" : 0.4,
+          "kind" : "machine"
+        },
+        "Lunge (Dumbbell)" : {
+          "factor" : 3.2,
+          "kind" : "free"
+        },
+        "Lying Leg Curl" : {
+          "factor" : 0.8,
+          "kind" : "accessory"
+        },
+        "Machine Squat" : {
+          "factor" : 0.7,
+          "kind" : "machine"
+        },
+        "Pause Squat" : {
+          "factor" : 1.1,
+          "kind" : "free"
+        },
+        "Pendulum Squat" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Reverse Lunge" : {
+          "factor" : 3.2,
+          "kind" : "free"
+        },
+        "Romanian Deadlift" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Safety Bar Squat" : {
+          "factor" : 1.05,
+          "kind" : "free"
+        },
+        "Seated Leg Curl" : {
+          "factor" : 0.8,
+          "kind" : "accessory"
+        },
+        "Single Leg Press" : {
+          "factor" : 0.8,
+          "kind" : "machine"
+        },
+        "Smith Machine Hip Thrust" : {
+          "factor" : 0.45,
+          "kind" : "accessory"
+        },
+        "Smith Machine Squat" : {
+          "factor" : 0.9,
+          "kind" : "machine"
+        },
+        "Split Squat" : {
+          "factor" : 3.2,
+          "kind" : "free"
+        },
+        "Squat (Barbell)" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Stiff Leg Deadlift" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Sumo Deadlift" : {
+          "factor" : 0.8,
+          "kind" : "free"
+        },
+        "Trap Bar Deadlift" : {
+          "factor" : 0.75,
+          "kind" : "free"
+        },
+        "V-Squat (Machine)" : {
+          "factor" : 0.7,
+          "kind" : "machine"
+        },
+        "Walking Lunge" : {
+          "factor" : 3.2,
+          "kind" : "free"
+        }
+      },
+      "femaleFactors" : [
+        0.57,
+        0.65,
+        0.71,
+        0.76,
+        0.8
+      ],
+      "standards" : [
+        0.9,
+        1.25,
+        1.65,
+        2.1,
+        2.6
+      ],
+      "weight" : {
+        "men" : 0.22,
+        "women" : 0.32
+      }
+    },
+    "shoulders" : {
+      "estimates" : {
+        "extra" : {
+
+        },
+        "from" : [
+          {
+            "group" : "chest",
+            "ratio" : 0.6
+          }
+        ]
+      },
+      "exercises" : {
+        "Arnold Press" : {
+          "factor" : 2.1,
+          "kind" : "free"
+        },
+        "Behind the Neck Press" : {
+          "factor" : 0.95,
+          "kind" : "free"
+        },
+        "Overhead Press (Barbell)" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Push Press" : {
+          "factor" : 0.8,
+          "kind" : "free"
+        },
+        "Seated Dumbbell Press" : {
+          "factor" : 1.95,
+          "kind" : "free"
+        },
+        "Seated Overhead Press (Barbell)" : {
+          "factor" : 0.95,
+          "kind" : "free"
+        },
+        "Shoulder Press (Dumbbell)" : {
+          "factor" : 1.95,
+          "kind" : "free"
+        },
+        "Shoulder Press (Machine)" : {
+          "factor" : 0.74,
+          "kind" : "machine"
+        },
+        "Single Arm Dumbbell Press" : {
+          "factor" : 1.95,
+          "kind" : "free"
+        },
+        "Z Press" : {
+          "factor" : 1.1,
+          "kind" : "free"
+        }
+      },
+      "femaleFactors" : [
+        0.52,
+        0.59,
+        0.64,
+        0.68,
+        0.72
+      ],
+      "standards" : [
+        0.4,
+        0.55,
+        0.75,
+        1,
+        1.3
+      ],
+      "weight" : {
+        "men" : 0.16,
+        "women" : 0.14
+      }
+    },
+    "triceps" : {
+      "estimates" : {
+        "extra" : {
+
+        },
+        "from" : [
+          {
+            "group" : "chest",
+            "ratio" : 0.43
+          },
+          {
+            "group" : "shoulders",
+            "ratio" : 0.72
+          }
+        ]
+      },
+      "exercises" : {
+        "Cable Overhead Triceps Extension" : {
+          "factor" : 0.5,
+          "kind" : "machine"
+        },
+        "Chest Dip" : {
+          "factor" : 0.32,
+          "kind" : "free"
+        },
+        "Close Grip Bench Press" : {
+          "factor" : 0.45,
+          "kind" : "free"
+        },
+        "Dumbbell Skull Crusher" : {
+          "factor" : 2,
+          "kind" : "free"
+        },
+        "French Press" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Incline Skull Crusher" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "JM Press" : {
+          "factor" : 0.65,
+          "kind" : "free"
+        },
+        "Machine Triceps Extension" : {
+          "factor" : 0.55,
+          "kind" : "machine"
+        },
+        "Overhead Rope Extension" : {
+          "factor" : 0.5,
+          "kind" : "machine"
+        },
+        "Overhead Triceps Extension" : {
+          "factor" : 0.7,
+          "kind" : "free"
+        },
+        "Reverse Grip Pushdown" : {
+          "factor" : 0.55,
+          "kind" : "machine"
+        },
+        "Rope Pushdown" : {
+          "factor" : 0.55,
+          "kind" : "machine"
+        },
+        "Single Arm Pushdown" : {
+          "factor" : 1,
+          "kind" : "machine"
+        },
+        "Skull Crusher" : {
+          "factor" : 1,
+          "kind" : "free"
+        },
+        "Triceps Dip" : {
+          "factor" : 0.35,
+          "kind" : "free"
+        },
+        "Triceps Pushdown (Cable)" : {
+          "factor" : 0.5,
+          "kind" : "machine"
+        }
+      },
+      "femaleFactors" : [
+        0.43,
+        0.53,
+        0.6,
+        0.65,
+        0.66
+      ],
+      "standards" : [
+        0.25,
+        0.37,
+        0.54,
+        0.74,
+        0.95
+      ],
+      "weight" : {
+        "men" : 0.11,
+        "women" : 0.1
+      }
+    }
+  },
+  "levelScores" : [
+    32,
+    52,
+    70,
+    85,
+    94
+  ],
+  "machineCap" : 80,
+  "masters" : {
+    "factors" : [
+      [
+        40,
+        1
+      ],
+      [
+        45,
+        1.055
+      ],
+      [
+        50,
+        1.13
+      ],
+      [
+        55,
+        1.225
+      ],
+      [
+        60,
+        1.34
+      ]
+    ],
+    "share" : 0.5
+  },
+  "men" : {
+    "bodyweightExponent" : 0.1,
+    "referenceWeight" : 80
+  },
+  "missingGroupCap" : 32,
+  "missingGroupShare" : 0.5,
+  "repCap" : 12,
+  "schemaVersion" : 1,
+  "topScore" : 99,
+  "windowDays" : 42,
+  "women" : {
+    "bodyweightExponent" : 0.3333333333333333,
+    "referenceWeight" : 65
+  }
+}
