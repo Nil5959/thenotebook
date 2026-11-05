@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הזמנה למחברת</title>
+<meta property="og:title" content="הזמנה להתאמן יחד במחברת">
+<meta property="og:description" content="אפליקציה לרישום אימוני כוח. מצטרפים ומתאמנים יחד.">
+<style>
+  :root { --bg: #f6f4ef; --text: #1c1b19; --muted: #6b6760; --accent: #e8572a; --card: #ffffff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #121110; --text: #f2efe9; --muted: #a09b92; --card: #1e1c1a; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+         background: var(--bg); color: var(--text); padding: 24px 16px;
+         font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+  main { width: 100%; max-width: 420px; background: var(--card); border-radius: 20px; padding: 28px 24px; text-align: center; }
+  .avatar { width: 88px; height: 88px; border-radius: 50%; margin: 0 auto 12px; background: var(--accent); color: #fff;
+            display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 700; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  h1 { font-size: 24px; margin: 0 0 8px; }
+  p { margin: 0 0 16px; color: var(--muted); }
+  a.button { display: block; padding: 14px; border-radius: 14px; font-weight: 600; text-decoration: none; margin-top: 12px; }
+  a.primary { background: var(--accent); color: #fff; }
+  a.secondary { border: 1.5px solid var(--accent); color: var(--accent); }
+  .small { font-size: 14px; margin-top: 16px; }
+  .code { font-weight: 700; color: var(--text); direction: ltr; unicode-bidi: embed; }
+</style>
+</head>
+<body>
+<main>
+  <div class="avatar" id="avatar"></div>
+  <h1 id="title"></h1>
+  <p data-he="המחברת היא אפליקציה לרישום אימוני כוח. כשנרשמים דרך ההזמנה, אתם חברים מיד." data-en="The Notebook is an app for logging strength training. Sign up through this invite and you're friends right away."></p>
+  <a id="install" class="button primary" href="#" data-he="התקנה מ-TestFlight" data-en="Install from TestFlight"></a>
+  <a id="open" class="button secondary" href="#" data-he="כבר מותקן? פתיחה באפליקציה" data-en="Already have it? Open in the app"></a>
+  <p class="small"><span data-he="אם ההזמנה לא הופיעה באפליקציה, לוחצים שם על &quot;יש לך הזמנה מחברים?&quot; ומקלידים:" data-en="If the invite doesn't show in the app, tap &quot;Invited by a friend?&quot; there and type:"></span> <span class="code" id="code"></span></p>
+</main>
+<script>
+  // While in beta: TestFlight. At launch: the App Store (https://apps.apple.com/app/id6830705009).
+  var INSTALL = "https://testflight.apple.com/join/QfET88Zu";
+  var SUPABASE = "https://nsltxgarabyvupiingnl.supabase.co";
+  var KEY = "sb_publishable_OCsyphZSmjZTCkPGHGiV1w_sZuvC7A1";
+  var en = !/^he\b/i.test(navigator.language || "");
+  if (en) { document.documentElement.lang = "en"; document.documentElement.dir = "ltr"; document.title = "Invite · The Notebook"; }
+  document.querySelectorAll("[data-he]").forEach(function (el) { el.textContent = el.getAttribute(en ? "data-en" : "data-he"); });
+  var params = new URLSearchParams(location.search);
+  var code = (params.get("c") || "").toUpperCase();
+  var g = params.get("g") || "";
+  var title = document.getElementById("title");
+  function setTitle(name) {
+    if (en) { title.textContent = name ? name + " invited you to The Notebook" : "You're invited to The Notebook"; return; }
+    if (!name) { title.textContent = "הזמנה למחברת"; return; }
+    title.textContent = g === "f" ? name + " מזמינה אותך להתאמן יחד" : g === "m" ? name + " מזמין אותך להתאמן יחד" : "קיבלת הזמנה מ" + name + " להתאמן יחד";
+  }
+  setTitle("");
+  var install = document.getElementById("install");
+  install.href = INSTALL;
+  if (/^[A-Z0-9]{8}$/.test(code)) {
+    document.getElementById("code").textContent = code;
+    var app = "thenotebook://invite/" + code + (g ? "?g=" + g : "");
+    document.getElementById("open").href = app;
+    // The install loses this link: keep it on the clipboard, so the app can offer Paste.
+    // In-app browsers (Instagram) often have no navigator.clipboard: the old way too.
+    install.addEventListener("click", function () {
+      var copied = false;
+      try {
+        var area = document.createElement("textarea");
+        area.value = location.href; area.setAttribute("readonly", ""); area.style.position = "fixed"; area.style.opacity = "0";
+        document.body.appendChild(area); area.select(); area.setSelectionRange(0, area.value.length);
+        copied = document.execCommand("copy"); document.body.removeChild(area);
+      } catch (e) {}
+      if (!copied) { try { navigator.clipboard && navigator.clipboard.writeText(location.href); } catch (e) {} }
+    });
+    fetch(SUPABASE + "/rest/v1/rpc/get_invite", {
+      method: "POST", headers: { "apikey": KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({ invite_token: code })
+    }).then(function (r) { return r.json(); }).then(function (p) {
+      if (!p || !p.id) return;
+      var name = (p.display_name || p.username || "").split(" ")[0];
+      setTitle(name);
+      var avatar = document.getElementById("avatar");
+      avatar.textContent = name.charAt(0).toUpperCase();
+      if (p.avatar_at) {
+        var img = new Image();
+        img.onload = function () { avatar.textContent = ""; avatar.appendChild(img); };
+        img.src = SUPABASE + "/storage/v1/object/public/avatars/" + p.id + ".jpg?v=" + encodeURIComponent(p.avatar_at);
+      }
+    }).catch(function () {});
+  } else {
+    document.getElementById("open").style.display = "none";
+    document.querySelector(".small").style.display = "none";
+  }
+</script>
+</body>
+</html>
