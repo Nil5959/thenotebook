@@ -156,11 +156,6 @@ html.fx .has-chip.done .tick::after{content:"";position:absolute;inset:9px;borde
 @keyframes rise{from{transform:translateY(.42em);clip-path:inset(0 0 100% 0)}to{transform:none;clip-path:inset(-20% -5% -20% -5%)}}
 @keyframes lift{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes arrive{from{opacity:0;transform:perspective(1200px) translateY(120px) rotateX(38deg) scale(.86)}to{opacity:1;transform:none}}
-html.fx h1{animation:rise .85s cubic-bezier(.16,1,.3,1) both}
-html.fx h1 b{animation:rise .85s .1s cubic-bezier(.16,1,.3,1) both}
-html.fx .hero .lede{animation:lift .6s .28s ease-out both}
-html.fx .hero .badge{animation:lift .6s .38s ease-out both}
-html.fx .hero .stage{animation:arrive 1.05s .05s cubic-bezier(.16,1,.3,1) both}
 html.fx .hero .phone{transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out}
 
 html.fx .story{height:calc(100svh + 3 * 130svh)}
